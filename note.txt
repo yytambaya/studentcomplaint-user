@@ -1,0 +1,6 @@
+Some ammendments on launch
++Make delete for your content only by matching the current user_id with the lits_id
++Correct validations(Esp title and text, and if possible new editor)
++Add Admin roles(fellows and super admin to review lits and approve them)
++Add lit review stage
++change publish checkbox to draft
