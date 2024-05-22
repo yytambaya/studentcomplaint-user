@@ -1,11 +1,11 @@
 import {useEffect, useLayoutEffect, useState} from 'react' 
 import Profile from './Profile'
-import NewLit from './NewLit'
-import Lits from './Lits'
-import EditLit from './EditLit'
 import { getSiteBaseURL } from '../../services/helpers'
 import logo1 from '../../asset/images/logo1.svg' 
 import userPic from '../../asset/images/user.svg';
+import NewUser from '../user/NewUser';
+import Users from './Users';
+import EditUser from '../user/EditUser';
 
 const Main = () => {
     const [page, setPage] = useState("Lits")
@@ -27,9 +27,9 @@ const Main = () => {
             
 <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
   <div class="container flex flex-wrap justify-between items-center mx-auto">
-  <a href={`${getSiteBaseURL()}/dashboard`} class="flex items-center">
+  <a href={`${getSiteBaseURL()}/users`} class="flex items-center">
       <img src={logo1} class="mr-1 h-6 sm:h-9" alt="Flowbite Logo"/>
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Cryptolits Admin</span>
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Carpark Admin</span>
   </a>
   <div class="flex items-center md:order-2">
       <button onClick={() => {setPage("Profile"); setLastPage(lastPage)}} type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -65,26 +65,23 @@ const Main = () => {
   <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
     <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       <li>
-        <a href="#" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Lits</a>
+        <a href="/parks" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Parks</a>
       </li>
       <li>
-        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Users</a>
+        <a href="/slots" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Slots</a>
       </li>
       <li>
-        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Analytics</a>
+        <a href="/reservations" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Reservations</a>
       </li>
       <li>
-        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Support</a>
-      </li>
-      <li>
-        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Others</a>
+        <a href="/users" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Users</a>
       </li>
     </ul>
   </div>
   </div>
 </nav>
 
-      {page == "Profile"? <Profile setPage={setPage} setLastPage={setLastPage} lastPage={lastPage} /> : page == "NewLit" ? <NewLit setPage={setPage} setLastPage={setLastPage} lastPage={lastPage} /> : page == "Lits" ? <Lits setLit={setLit} setPage={setPage} setLastPage={setLastPage} lastPage={lastPage}/> : page == "EditLit" ? <EditLit lit={lit} setPage={setPage} setLastPage={setLastPage} lastPage={lastPage}/> : null}
+      {page == "NewUser"? <NewUser setPage={setPage} setLastPage={setLastPage} lastPage={lastPage} /> : page == "Users" ? <Users setPage={setPage} setLastPage={setLastPage} lastPage={lastPage} /> : page == "Lits" ? <Users setLit={setLit} setPage={setPage} setLastPage={setLastPage} lastPage={lastPage}/> : page == "EditLit" ? <EditUser lit={lit} setPage={setPage} setLastPage={setLastPage} lastPage={lastPage}/> : null}
         
     </div>    
 

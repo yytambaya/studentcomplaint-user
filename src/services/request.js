@@ -15,11 +15,9 @@ export const getData = async (url, headers, params) => {
 export const postData = async (url, headers, data) => {
     try{
           const res = await axios.post(url, data, {headers: headers});
-          alert(res)
           return {error: "", result: res};
             
       }catch(error){
-        alert(error)
         return {error: "error", result: error}
       }
 }

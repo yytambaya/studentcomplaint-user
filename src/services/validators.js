@@ -4,6 +4,7 @@ export const reg_desc = /[A-Za-z0-9!@#$%&*()-_+=:;//\/.?{},]{0,200}/;
 export const reg_text = (/^(?![ -.&,_'":?!])(?!.*[- &_'":]$)(?!.*[-.#@&,:?!]{2})[a-zA-Z0-9- .#@&,_'":.?!]+$/)
 export const reg_id = /^[A-Za-z0-9]{1,}$/ 
 export const reg_email = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+export const reg_phoneNumber = /^[0-9]{11}$/
 //export const  reg_name = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
 //export const reg_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/;
 export const reg_password = /^[A-Za-z0-9]{6,50}/ 
@@ -20,13 +21,30 @@ export const validateEmail = (email) => {
             res = {error: "", result: ""};
                 
         }else{
-            res = {error: "error", result: "inavlid email address"};    
+            res = {error: "error", result: "invalid email address"};    
         }
     }else{
         res = {error: "error", result: "email address is empty"};
     }
     return res;
 };
+
+export const validatePhoneNumber = (phoneNumber) => {
+    //email = req.body.email; 
+    var res = {error:"error", result:"Unknown"};
+    if(phoneNumber != "" && phoneNumber != undefined){
+        if(reg_phoneNumber.test(phoneNumber)){
+            res = {error: "", result: ""};
+                
+        }else{
+            res = {error: "error", result: "invalid phone number"};    
+        }
+    }else{
+        res = {error: "error", result: "phone number address is empty"};
+    }
+    return res;
+};
+
 
 export const validatePassword = (password) => {
     //password = req.body.password;
@@ -36,7 +54,7 @@ export const validatePassword = (password) => {
             res = {error:"", result:""};;
             
         }else{
-            res = {error: "error", result: "inavlid password"};    
+            res = {error: "error", result: "invalid password"};    
         }
     }else{
         res = {error: "error", result: "password is empty"};
@@ -73,14 +91,14 @@ export const validateTitle = (title) => {
     }else{
         res = {error: "error", result: "title is empty"};
     }
-    return res
+    return res;
 };
 
 export const validateText = (text) => {
     //name = req.body.name;
     var res = {error:"error", result:"Unknown"};
     if(text != "" && text != undefined){
-        if(true){
+        if(reg_text.test(text)){
             res = {error:"", result:""};;
             
         }else{

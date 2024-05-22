@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import userPic from "../../asset/images/user.svg"
 import { getSiteBaseURL } from '../../services/helpers';
-const Profile = ({setPage, lastPage, setLastPage}) => {
+const Profile = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     
@@ -20,15 +20,15 @@ const Profile = ({setPage, lastPage, setLastPage}) => {
     return (
         <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
-          <div class="flex w-full mb-12">
-            <div>
-            <button onClick={() => {setPage(lastPage);}} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <div class="flex items-center w-full mb-12 space-x-8">
+            
+            <button onClick={() => window.location.href="/users"} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
-            </div>
-            <h1 class="text-2xl font-medium title-font text-gray-900 tracking-widest">Profile</h1>
+            
+            <h1 class="text-2xl -mt-2 font-medium title-font text-gray-900 tracking-widest">Profile</h1>
           </div>
           <div class="flex flex-wrap -m-4">
             <div class="p-4 lg:w-1/2">
@@ -36,7 +36,7 @@ const Profile = ({setPage, lastPage, setLastPage}) => {
                 <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={userPic}/>
                 <div class="flex-grow sm:pl-8">
                   <h2 class="title-font font-medium text-lg text-gray-900">{name != ""? name:"Unknown"}</h2>
-                  <h3 class="text-gray-500 mb-1">Author Admin</h3>
+                  <h3 class="text-gray-500 mb-1">Admin</h3>
                   <p class="mb-1">{email !=""? email:"Unknown email"}</p>
                   <button onClick={() => logout()} type="submit" class="mt-3 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" data-modal-toggle="popup-modal">Logout</button>
             
