@@ -3,7 +3,7 @@ import './App.css';
 import Login from './dashboard/Login';
 import Dashboard from './dashboard/app/';
 import Signup from './dashboard/signup';
-import UserMain from './dashboard/user/UserMain';
+import ComplaintMain from './dashboard/complaint/ComplaintMain';
 import { ProtectedRoutes } from './dashboard/ProtectedRoutes';
 import { useAuth } from './hooks/useAuth';
 import ParkMain from './dashboard/park/ParkMain';
@@ -20,7 +20,7 @@ function App() {
       <Route exact path="login" element={<Login/>} />
       <Route element={<ProtectedRoutes/>}>
         <Route exact path="profile" element={<Profile/>} />
-        <Route exact path="users" element={<UserMain/>} />
+        <Route exact path="complaints" element={<ComplaintMain/>} />
         <Route exact path="parks" element={<ParkMain/>} />
         <Route exact path="slots" element={<SlotMain/>} />
         <Route exact path="reservations" element={<ReservationMain/>} />

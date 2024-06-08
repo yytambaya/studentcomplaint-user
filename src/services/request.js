@@ -7,7 +7,7 @@ export const getData = async (url, headers, params) => {
         return await {error: "", result: res};
             
       }catch(error){
-        alert("Error here: " + error)
+        //alert("Error here: " + error)
         return {error: "error", result: error}
       }
 }

@@ -4,26 +4,33 @@ import { getSiteBaseURL } from '../../services/helpers';
 const Profile = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
+    const [regNumber, setRegNumber] = useState("")
+    
     
     useEffect(() => {
         setName(localStorage.getItem("name"));
         setEmail(localStorage.getItem("email"));
-    }, [name, email])
+        setPhoneNumber(localStorage.getItem("phoneNumber"));
+        setRegNumber(localStorage.getItem("regNumber"));
+    }, [])
 
     const logout = () => {
         localStorage.removeItem("jwt_token");
         localStorage.removeItem("_id");
         localStorage.removeItem("name");
+        localStorage.removeItem('phoneNumber')
+        localStorage.removeItem('regNumber')
         localStorage.removeItem("email")
         window.location.href = `${getSiteBaseURL()}/login`
     }
     return (
         <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
-          <div class="flex items-center w-full mb-12 space-x-8">
+          <div class="flex items-center w-full mb-12 space-x-4">
             
-            <button onClick={() => window.location.href="/users"} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+            <button onClick={() => window.location.href="/complaints"} type="button" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                 </svg>
             </button>
@@ -34,10 +41,12 @@ const Profile = () => {
             <div class="p-4 lg:w-1/2">
               <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                 <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={userPic}/>
-                <div class="flex-grow sm:pl-8">
-                  <h2 class="title-font font-medium text-lg text-gray-900">{name != ""? name:"Unknown"}</h2>
-                  <h3 class="text-gray-500 mb-1">Admin</h3>
-                  <p class="mb-1">{email !=""? email:"Unknown email"}</p>
+                <div class="flex-grow space-y-4 sm:pl-8">
+                  <h2 class="title-font font-medium text-4xl text-gray-900">{name != ""? name:"Unknown"}</h2>
+                  <h3 class="text-gray-500 text-xl">Student</h3>
+                  <p class="mb-1 text-xl">{regNumber !=""? regNumber:"Unknown email"}</p>
+                  <p class="mb-1 text-xl">{phoneNumber !=""? phoneNumber:"Unknown email"}</p>
+                  <p class="mb-1 text-xl">{email !=""? email:"Unknown email"}</p>
                   <button onClick={() => logout()} type="submit" class="mt-3 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" data-modal-toggle="popup-modal">Logout</button>
             
                   {/*<span class="inline-flex">

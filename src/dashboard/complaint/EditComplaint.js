@@ -4,11 +4,11 @@ import { postData } from "../../services/request";
 import { validateTitle, validateText, validateEmail, validatePassword, validateNumber, validateName, validatePhoneNumber } from "../../services/validators";
 import { Notification } from '../components/Notification';
 
-const EditUser = ({setPage, setLastPage, lastPage, user}) => {
-    const [name, setName] = useState(user.name)
-    const [email, setEmail] = useState(user.email)
-    const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber)
-    const [status, setStatus] = useState(user.status)
+const EditComplaint = ({setPage, setLastPage, lastPage, complaint}) => {
+    const [name, setName] = useState(complaint.name)
+    const [email, setEmail] = useState(complaint.email)
+    const [phoneNumber, setPhoneNumber] = useState(complaint.phoneNumber)
+    const [status, setStatus] = useState(complaint.status)
     const [publish, setPublish] = useState("0")
     const [author, setAuthor] = useState("")
     const [action, setAction] = useState("save")
@@ -16,22 +16,22 @@ const EditUser = ({setPage, setLastPage, lastPage, user}) => {
     const [genError, setGenError] = useState("")
 
     
-    const editUser = async () => {
+    const editComplaint = async () => {
         //alert("Title: " + title + " Text: " + text + " Checked: " + publish);
         var accessToken = localStorage.getItem('jwt_token');
-        var user_id = localStorage.getItem('_id');
-        var user_name = localStorage.getItem('name');
+        var complaint_id = localStorage.getItem('_id');
+        var complaint_name = localStorage.getItem('name');
         var name_val = validateName(name).error == "" ? true: false;
         var  email_val = validateEmail(email).error == "" ? true: false;
         var phoneNumber_val = validatePhoneNumber(phoneNumber).error == "" ? true: false;
         //var password_val = validatePassword(password).error == "" ? true: false;
         var status_val = status == true || status == false ? true: false;
         var at_val = accessToken == "" || accessToken == undefined? false : true; 
-        var ui_val = user_id == "" || user_id == undefined? false : true; 
-        var un_val = user_name == "" || user_name == undefined? false : true; 
-        if(accessToken == "") setGenError("Unauthorized user. Login again!"); 
-        if(user_id == "") setGenError("Unauthorized user, no id. Login again!"); 
-        if(user_name == "")  setGenError("Unauthorized user, no name. Login again!"); 
+        var ui_val = complaint_id == "" || complaint_id == undefined? false : true; 
+        var un_val = complaint_name == "" || complaint_name == undefined? false : true; 
+        if(accessToken == "") setGenError("Unauthorized complaint. Login again!"); 
+        if(complaint_id == "") setGenError("Unauthorized complaint, no id. Login again!"); 
+        if(complaint_name == "")  setGenError("Unauthorized complaint, no name. Login again!"); 
         setError([...error, error.find(item => item.field == "name").msg = validateName(name).result])
         setError([...error, error.find(item => item.field == "email").msg = validateEmail(email).result])
         setError([...error, error.find(item => item.field == "phoneNumber").msg = validatePhoneNumber(phoneNumber).result])
@@ -41,18 +41,18 @@ const EditUser = ({setPage, setLastPage, lastPage, user}) => {
         if(name_val && email_val && phoneNumber_val  && status_val && at_val && ui_val && un_val){
             //alert("going")
             setAction("Loading...")
-            const url = `${getAPIBaseURL()}/v1/admin/user/edit`;
+            const url = `${getAPIBaseURL()}/v1/admin/complaint/edit`;
             const api_key = '@!8(T#7<R:I#:F1#r!>BW/!';
             const headers = {'x-access-key': api_key, 'x-access-token': accessToken}
             const statusCode = status == true ? 1 : 0;
-            const data = {name, email, phoneNumber, status: statusCode, id: user._id};
+            const data = {name, email, phoneNumber, status: statusCode, id: complaint._id};
 
             const request = await postData(url, headers, data)
             //alert(JSON.stringify(request))
             if(request.error == "" && request.result.data?.error != "error"){
                 if(request.result.data?.error == ""){
                     
-                    setPage('User')
+                    setPage('Complaint')
 
                 }else{
                     setGenError(request.result.data?.result)
@@ -76,7 +76,7 @@ const EditUser = ({setPage, setLastPage, lastPage, user}) => {
 
     return(
         <div>
-        {/*<Notification message={"A new user is successfully created!"}/>*/}
+        {/*<Notification message={"A new complaint is successfully created!"}/>*/}
         <div class="mx-5 md:mx-20 mt-10">
             
             <div class="flex space-x-4 mb-10">
@@ -87,7 +87,7 @@ const EditUser = ({setPage, setLastPage, lastPage, user}) => {
                 </svg>
             </button>
             </div>
-                <h1 class="sm:text-3xl text-2xl mb-2 text-black">Edit user</h1>
+                <h1 class="sm:text-3xl text-2xl mb-2 text-black">Edit complaint</h1>
             </div>
             <div class="my-5">
                 {genError != "" ? <div class="text-red-500 text-sm font-semibold">{genError}</div> : ""}
@@ -115,11 +115,11 @@ const EditUser = ({setPage, setLastPage, lastPage, user}) => {
                 <p className=''>{status ? "active" : "inactive"}</p>
             </div>
             
-            <button onClick={() => editUser()} type="submit" class="flex text-white bg-blue-700 px-6 py-2 mb-8">{action}</button>
+            <button onClick={() => editComplaint()} type="submit" class="flex text-white bg-blue-700 px-6 py-2 mb-8">{action}</button>
         </div>
         </div>
 
     )
 }
 
-export default EditUser
+export default EditComplaint

@@ -3,9 +3,9 @@ import Profile from './Profile'
 import { getSiteBaseURL } from '../../services/helpers'
 import logo1 from '../../asset/images/logo1.svg' 
 import userPic from '../../asset/images/user.svg';
-import NewUser from '../user/NewUser';
+import NewUser from '../complaint/NewComplaint';
 import Users from './Users';
-import EditUser from '../user/EditUser';
+import EditUser from '../complaint/Complaint';
 
 const Main = () => {
     const [page, setPage] = useState("Lits")
