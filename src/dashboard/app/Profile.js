@@ -6,6 +6,7 @@ const Profile = () => {
     const [email, setEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [regNumber, setRegNumber] = useState("")
+    const [roomNumber, setRoomNumber] = useState("")
     
     
     useEffect(() => {
@@ -13,6 +14,7 @@ const Profile = () => {
         setEmail(localStorage.getItem("email"));
         setPhoneNumber(localStorage.getItem("phoneNumber"));
         setRegNumber(localStorage.getItem("regNumber"));
+        setRoomNumber(localStorage.getItem("roomNumber"))
     }, [])
 
     const logout = () => {
@@ -45,6 +47,7 @@ const Profile = () => {
                   <h2 class="title-font font-medium text-4xl text-gray-900">{name != ""? name:"Unknown"}</h2>
                   <h3 class="text-gray-500 text-xl">Student</h3>
                   <p class="mb-1 text-xl">{regNumber !=""? regNumber:"Unknown email"}</p>
+                  {/*<p class="mb-1 text-xl">{roomNumber !=""? roomNumber:"Unknown email"}</p>*/}
                   <p class="mb-1 text-xl">{phoneNumber !=""? phoneNumber:"Unknown email"}</p>
                   <p class="mb-1 text-xl">{email !=""? email:"Unknown email"}</p>
                   <button onClick={() => logout()} type="submit" class="mt-3 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" data-modal-toggle="popup-modal">Logout</button>

@@ -39,7 +39,7 @@ const Signup = () => {
             const url = `${getAPIBaseURL()}/v1/student/new`;
             const api_key = '@!8(T#7<R:I#:F1#r!>BW/!'
             const headers = {'x-access-key': api_key}
-            const data = {name: name, regNumber, email: email, phoneNumber, hostelId, password: password, status: 1};
+            const data = {name: name, regNumber, roomNumber, email: email, phoneNumber, hostelId, password: password, status: 1};
 
             const request = await postData(url, headers, data)
             //alert(JSON.stringify(request))

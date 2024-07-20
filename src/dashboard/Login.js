@@ -38,6 +38,8 @@ const Login = () => {
                     localStorage.setItem('regNumber', request.result.data.result.result.regNumber);
                     localStorage.setItem('name', request.result.data.result.result.name);
                     localStorage.setItem('hostelId', request.result.data.result.result.hostelId);
+                    localStorage.setItem('roomNumber', request.result.data.result.result.roomNumber);
+
                     window.location.href = `${getSiteBaseURL()}/complaints`
                     
 

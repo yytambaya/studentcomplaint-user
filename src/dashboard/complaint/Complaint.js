@@ -11,6 +11,7 @@ const Complaint = ({setPage, setLastPage, lastPage, complaint}) => {
     const [password, setPassword] = useState("")
     const [status, setStatus] = useState(false)
     const [hostelName, setHostelName] = useState("")
+    const [roomNumber, setRoomNumber] = useState("")
     const [publish, setPublish] = useState("0")
     const [author, setAuthor] = useState("")
     const [action, setAction] = useState("Edit")
@@ -20,6 +21,7 @@ const Complaint = ({setPage, setLastPage, lastPage, complaint}) => {
     
     useEffect(() => {
         getHostelName(complaint.hostelId)
+        setRoomNumber(localStorage?.getItem("roomNumber"))
     }, [])
     
     const createComplaint = async () => {
@@ -180,7 +182,7 @@ const Complaint = ({setPage, setLastPage, lastPage, complaint}) => {
             
             <div className='w-full flex flex-col justify-between align-middle py-2 px-3'>
                 <div>
-                    <p className=' text-xl'>{hostelName}</p>
+                    <p className=' text-xl'>{roomNumber + ", " + hostelName}</p>
                 </div>
             <div>
                 <div className='flex justify-between space-y-4 flex-wrap mb-12'>
