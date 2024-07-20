@@ -41,15 +41,18 @@ const Complaints = ({setPage, setLastPage, setComplaint}) => {
     const getComplaints = async () => {
         //alert("Title: " + title + " Text: " + text + " Checked: " + publish);
         var accessToken = localStorage.getItem('jwt_token');
+        var userId = localStorage.getItem('_id');
         var at_val = accessToken == "" || accessToken == undefined? false : true; 
-        if(accessToken == "") setGenError("Unauthorized complaint. Login again!"); 
+        var userId_val = userId == "" || userId == undefined? false : true; 
+        if(accessToken == "") setGenError("Unauthorized user. Login again!"); 
+        if(userId == "") setGenError("Unauthorized user. Login again!"); 
         
-        if(at_val){
+        if(at_val && userId_val){
             //alert("going")
-            const url = `${getAPIBaseURL()}/v1/admin/complaint/getall`;
+            const url = `${getAPIBaseURL()}/v1/admin/complaint/getforuser`;
             const api_key = '@!8(T#7<R:I#:F1#r!>BW/!';
             const headers = {'x-access-key': api_key, 'x-access-token': accessToken}
-            const params = {limit:limit , skip:skip};
+            const params = {limit:limit , skip:skip, id: userId};
 
             const request = await getData(url, headers, params)
             //alert(JSON.stringify(request))

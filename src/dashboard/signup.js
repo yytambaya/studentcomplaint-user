@@ -6,13 +6,14 @@ import { validateEmail, validateID_get, validateName, validatePassword, validate
 const Signup = () => {
     const [name, setName] = useState("");
     const [regNumber, setRegNumber] = useState("")
+    const [roomNumber, setRoomNumber] = useState("")
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [hostelId, setHostelId] = useState("");
     const [password, setPassword] = useState("");
     const [hostels, setHostels] = useState([])
     const [btnState, setBtnState] = useState("Sign up");
-    const [error, setError] = useState([{field: "name", msg:""}, {field: "regNumber", msg: ""}, {field: "email", msg:""}, {field: "phoneNumber", msg:""}, {field: "hostelId", msg: ""}, {field: "password", msg:""}]);
+    const [error, setError] = useState([{field: "name", msg:""}, {field: "regNumber", msg: ""}, {field: "roomNumber", msg: ""}, {field: "email", msg:""}, {field: "phoneNumber", msg:""}, {field: "hostelId", msg: ""}, {field: "password", msg:""}]);
     const [genError, setGenError] = useState("")
 
     useEffect(() => {
@@ -68,15 +69,16 @@ const Signup = () => {
     const getHostels = async () => {
         //alert("Title: " + title + " Text: " + text + " Checked: " + publish);
         //alert(park)
-        var accessToken = localStorage.getItem('jwt_token');
-        var at_val = accessToken == "" || accessToken == undefined? false : true; 
-        if(accessToken == "") setGenError("Unauthorized slot. Login again!"); 
+        //var accessToken = localStorage.getItem('jwt_token');
+        //var at_val = accessToken == "" || accessToken == undefined? false : true; 
+        //if(accessToken == "") setGenError("Unauthorized slot. Login again!"); 
         
-        if(at_val){
+        // if(at_val){
             //alert("going")
             const url = `${getAPIBaseURL()}/v1/admin/hostel/getall`;
             const api_key = '@!8(T#7<R:I#:F1#r!>BW/!';
-            const headers = {'x-access-key': api_key, 'x-access-token': accessToken}
+            //const headers = {'x-access-key': api_key, 'x-access-token': accessToken}
+            const headers = {}
             //const params = {limit:limit , skip:skip};
 
             const request = await getData(url, headers)
@@ -96,12 +98,12 @@ const Signup = () => {
                 //setGenError("Something went wrong")
             }
             
-        }  
+        //}  
     }
 
     return(
-        <section class="bg-green-200 ">
-            <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <section class="bg-white">
+            <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto mt-8 lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 ">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
                 AFIT Hostel Management System    
@@ -130,7 +132,7 @@ const Signup = () => {
                         </div>
                         <div>
                             <label for="email" class="block mb-2 text-lg font-medium text-gray-900 ">Phone number</label>
-                            <input value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" name="email" id="email" class="bg-gray-50 text-gray-900 sm:text-sm block w-full p-2.5" placeholder="name@company.com" required=""/>
+                            <input value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} type="number" name="email" id="email" class="bg-gray-50 text-gray-900 sm:text-sm block w-full p-2.5" placeholder="08011111111" required=""/>
                             {error.find(item => item.field == "phoneNumber").msg ? <p class="text-red-500 text-sm font-semibold">{error.find(item => item.field == "phoneNumber").msg }</p>: null}
                         </div>
                         <div class="mb-6">
@@ -142,6 +144,11 @@ const Signup = () => {
                                 )}
                             </select>    
                             {error.find(item => item.field == "hostelId").msg ? <p class="text-red-500 text-sm font-semibold mt-1">{error.find(item => item.field == "hostelId").msg }</p>: null}
+                        </div>
+                        <div>
+                            <label for="roomNumber" class="block mb-2 text-lg font-medium text-gray-900 ">Room Number</label>
+                            <input value={roomNumber} onChange={(e) => setRoomNumber(e.target.value)} type="text" name="regNumber" id="email" class="bg-gray-50 text-gray-900 sm:text-sm block w-full p-2.5" placeholder="A24" required=""/>
+                            {error.find(item => item.field == "roomNumber").msg ? <p class="text-red-500 text-sm font-semibold">{error.find(item => item.field == "roomNumber").msg }</p>: null}
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-lg font-medium text-gray-900 ">Password</label>

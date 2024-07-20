@@ -86,7 +86,7 @@ const Login = () => {
     }
 
     return(
-        <section class="bg-green-200">
+        <section class="bg-white">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
@@ -101,7 +101,7 @@ const Login = () => {
                         {genError != "" ? <div class="text-red-500 text-sm font-semibold">{genError}</div> : ""}
                         <div>
                             <label for="regNumber" class="block mb-2 text-lg font-medium text-gray-900 ">Reg number</label>
-                            <input value={regNumber} onChange={(e) => setRegNumber(e.target.value)} type="regNumber" name="regNumber" id="regNumber" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm block w-full p-2.5" placeholder="name@company.com" required=""/>
+                            <input value={regNumber} onChange={(e) => setRegNumber(e.target.value)} type="regNumber" name="regNumber" id="regNumber" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm block w-full p-2.5" placeholder="u17cs1005" required=""/>
                             {error.find(item => item.field == "regNumber").msg ? <p class="text-red-500 text-sm font-semibold">{error.find(item => item.field == "regNumber").msg }</p>: null}
                         </div>
                         <div>
