@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import { getAPIBaseURL, getSiteBaseURL } from "../services/helpers";
 import { postData } from "../services/request";
-import { validateregNumber, validatePassword, validateName } from "../services/validators";
+import { validatePassword, validateName } from "../services/validators";
 
 const Login = () => {
     const [regNumber, setRegNumber] = useState("");
