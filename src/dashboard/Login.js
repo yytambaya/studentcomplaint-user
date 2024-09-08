@@ -11,7 +11,7 @@ const Login = () => {
     const [genError, setGenError] = useState("")
     
     const login = async () => {
-        //alert("regNumber: " + regNumber + " Password: " + password);
+        alert("regNumber: " + regNumber + " Password: " + password);
         var r_val = validateName(regNumber).error == "" ? true: false;
         var p_val = validatePassword(password).error == "" ? true: false;
         setError([...error, error.find(item => item.field == "regNumber").msg = validateName(regNumber).result])
@@ -25,7 +25,7 @@ const Login = () => {
             const data = {regNumber: regNumber, password: password};
 
             const request = await postData(url, headers, data)
-            //alert(JSON.stringify(request))
+            alert(JSON.stringify(request))
             
             if(request.error == "" && request.result.data?.error != "error"){
                 if(request.result.data?.error == ""){
@@ -55,7 +55,7 @@ const Login = () => {
                 }else if(request.result.data?.status == 404){
                     setGenError(request.result.data?.result)
                 } else{
-                    setGenError("check your form for errors")
+                    setGenError("check your form for errors 2")
                 }
                 
             }
@@ -92,7 +92,7 @@ const Login = () => {
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                 <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
-                AFIT Hostel Complaint Management System    
+                AFIT Hostel Complaint Management System 
             </a>
             <div class="w-full bg-teal-500 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
