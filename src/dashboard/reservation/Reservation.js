@@ -60,7 +60,7 @@ const Reservation = ({setPage, setLastPage, lastPage, reservation}) => {
         setError([...error, error.find(item => item.field == "status").msg = validateTitle(status).result])
          
         if(name_val && email_val && phoneNumber_val && password_val  && status_val && at_val && ui_val && un_val){
-            alert("going")
+            //alert("going")
             setAction("Loading...")
             const url = `${getAPIBaseURL()}/v1/admin/reservation/new`;
             const api_key = '@!8(T#7<R:I#:F1#r!>BW/!';

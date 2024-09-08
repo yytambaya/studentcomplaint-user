@@ -58,7 +58,7 @@ const EditSlot = ({setPage, setLastPage, lastPage, slot}) => {
 
             }else if(request.result.data?.error == "error"){
                 //setGenError("check your form for errors")
-                 alert(JSON.stringify(request.result.data))
+                 //alert(JSON.stringify(request.result.data))
                  if(request.result.data?.status == 409){
                     setGenError(request.result.data?.result)
                 }else{
@@ -89,7 +89,7 @@ const EditSlot = ({setPage, setLastPage, lastPage, slot}) => {
             //const params = {limit:limit , skip:skip};
 
             const request = await getData(url, headers)
-            alert(JSON.stringify(request))
+            //alert(JSON.stringify(request))
             if(request.error == ""){
                 if(request.result.data.error == ""){
                     //alert(JSON.stringify(request.result.data.result))

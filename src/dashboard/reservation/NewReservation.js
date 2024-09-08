@@ -86,7 +86,7 @@ const NewReservation = ({setPage, setLastPage, lastPage}) => {
             //const params = {limit:limit , skip:skip};
 
             const request = await getData(url, headers)
-            alert(JSON.stringify(request))
+            //alert(JSON.stringify(request))
             if(request.error == ""){
                 if(request.result.data.error == ""){
                     //alert(JSON.stringify(request.result.data.result))

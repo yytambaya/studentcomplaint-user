@@ -11,7 +11,7 @@ const Login = () => {
     const [genError, setGenError] = useState("")
     
     const login = async () => {
-        alert("regNumber: " + regNumber + " Password: " + password);
+        //alert("regNumber: " + regNumber + " Password: " + password);
         var r_val = validateName(regNumber).error == "" ? true: false;
         var p_val = validatePassword(password).error == "" ? true: false;
         setError([...error, error.find(item => item.field == "regNumber").msg = validateName(regNumber).result])
@@ -25,7 +25,7 @@ const Login = () => {
             const data = {regNumber: regNumber, password: password};
 
             const request = await postData(url, headers, data)
-            alert(JSON.stringify(request))
+            //alert(JSON.stringify(request))
             
             if(request.error == "" && request.result.data?.error != "error"){
                 if(request.result.data?.error == ""){
