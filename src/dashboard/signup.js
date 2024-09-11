@@ -58,7 +58,7 @@ const Signup = () => {
                 if(request.result.data?.status == 409){
                     setGenError(request.result.data?.result)
                 }else{
-                    setGenError("check your form for errors")
+                    //setGenError(request.result.data?.result)
                 }
             }
 

@@ -55,7 +55,7 @@ const Login = () => {
                 }else if(request.result.data?.status == 404){
                     setGenError(request.result.data?.result)
                 } else{
-                    setGenError("check your form for errors 2")
+                    setGenError(request.result.data?.result)
                 }
                 
             }
